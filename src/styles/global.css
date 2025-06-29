@@ -1,0 +1,38 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Importa las fuentes de Google */
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700&family=Manrope:wght@400;500;700&display=swap');
+
+/* Define variables CSS */
+:root {
+  --font-primary:
+    'Inter', sans-serif; /* Similar a Helvetica Now (texto general) */
+  --font-secondary:
+    'Manrope', sans-serif; /* Similar a Neue Montreal (títulos) */
+}
+
+/* Aplica las fuentes */
+body {
+  font-family: var(--font-primary);
+  line-height: 1.6;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+span {
+  font-family: var(--font-secondary);
+  font-weight: 500; /* Medium weight para títulos como JestSee */
+}
+
+/* Opcional: Estilo para botones o elementos especiales */
+.button,
+.cta {
+  font-family: var(--font-secondary);
+  font-weight: 700;
+}

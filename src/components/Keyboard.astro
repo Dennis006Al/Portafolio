@@ -1,0 +1,167 @@
+---
+// src/components/Keyboard.astro
+import Github from './icons/Github.tsx';
+import Linkedin from './icons/Linkedin.tsx';
+import Mail from './icons/Mail.tsx';
+import ArrowRight from './icons/ArrowRight.tsx';
+
+interface Props {
+  class?: string;
+}
+
+const { class: className } = Astro.props;
+
+const SOCIAL_MEDIA_DATA = [
+  {
+    name: 'GitHub',
+    href: 'https://github.com/Dennis006Al',
+    icon: Github,
+  },
+  {
+    name: 'LinkedIn',
+    href: 'https://www.linkedin.com/in/dennis-landaverde-873a07284/',
+    icon: Linkedin,
+  },
+  {
+    name: 'Email',
+    href: 'mailto:dennislandaverde13@email.com',
+    icon: Mail,
+  },
+];
+---
+
+<div class:list={['flex items-start text-center max-xs:flex-col', className]}>
+  <div class="board">
+    {
+      SOCIAL_MEDIA_DATA.map(({ name, href, icon: Icon }) => (
+        <div class="key-position">
+          <a
+            aria-label={name}
+            class="key"
+            data-key={name}
+            target="_blank"
+            rel="noopener noreferrer"
+            href={href}
+          >
+            <Icon className="w-[2.25rem] h-[2.25rem]" />
+          </a>
+        </div>
+      ))
+    }
+  </div>
+  <div class="key-position flex items-center justify-center">
+    <a
+      id="cta-hero-btn"
+      href="#projects"
+      data-block="center"
+      class="key call-to-action peer"
+    >
+      <p class="call-to-action-content text-white">Explore more</p>
+    </a>
+  </div>
+</div>
+
+<style>
+  :root {
+    --background-2: theme(colors.zinc.950);
+    --background-3: theme(colors.zinc.800);
+    --contrast: #fff;
+    --size: 5rem;
+  }
+
+  svg {
+    width: 2.25rem;
+    height: 2.25rem;
+  }
+
+  @media (max-width: 640px) {
+    :root {
+      --size: 3rem;
+    }
+
+    svg {
+      width: 2rem;
+      height: 2rem;
+    }
+  }
+
+  .board {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: calc(var(--size) * 0.02);
+  }
+
+  .key.call-to-action {
+    width: 160px;
+    font-size: 14px;
+    font-weight: 500;
+    text-transform: uppercase;
+    letter-spacing: 0.05rem;
+    font-family:
+      ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, 'Liberation Mono',
+      'Courier New', monospace;
+  }
+
+  .call-to-action-content::after {
+    position: absolute;
+    content: '';
+    width: 0;
+    left: 0;
+    top: 50%;
+    margin: 10px 15%;
+    background: #fff;
+    height: 1.5px;
+    transition: 0.3s ease-out;
+  }
+
+  .key.call-to-action:hover .call-to-action-content::after {
+    width: 70%;
+  }
+
+  .key-position {
+    transform: rotateZ(0turn) rotateY(0.05turn) rotateX(-0.1turn);
+  }
+
+  .key {
+    position: relative;
+    width: var(--size);
+    height: var(--size);
+    font-size: calc(var(--size) / 2);
+    border: 0.1rem solid var(--background-3);
+    border-radius: calc(var(--size) * 0.2);
+    background: var(--background-2);
+    color: var(--contrast);
+    box-shadow:
+      0.15rem 0.15rem 0 0 var(--background-3),
+      0.3rem 0.3rem 0 0 var(--background-3),
+      0.45rem 0.45rem 0 0 var(--background-3),
+      0.6rem 0.6rem 0 0 var(--background-3);
+    transition: 0.2s ease;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .key:hover {
+    cursor: pointer;
+    transform: translateX(0.3rem) translateY(0.3rem);
+    box-shadow:
+      0.15rem 0.15rem 0 0 var(--background-3),
+      0.3rem 0.3rem 0 0 var(--background-3),
+      0.45rem 0.45rem 0 0 var(--background-3),
+      0.5rem 0.5rem 0 0 var(--background-3);
+  }
+
+  .key:active,
+  .key.isDown {
+    cursor: grabbing;
+    transform: translateX(0.8rem) translateY(0.8rem);
+    box-shadow:
+      0.1rem 0.1rem 0 0 var(--background-3),
+      0.1rem 0.1rem 0 0 var(--background-3),
+      0.2rem 0.2rem 0 0 var(--background-3),
+      0.2rem 0.2rem 0 0 var(--background-3);
+    filter: blur(0.02rem);
+  }
+</style>

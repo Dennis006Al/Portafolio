@@ -1,0 +1,30 @@
+---
+const navItems = [
+  { label: 'Projects', href: '#projects' },
+  { label: 'Technologies', href: '#tech' },
+  { label: 'Services', href: '#services' },
+  { label: 'Contact', href: '#contact' },
+];
+---
+
+<nav
+  id="navbar"
+  class="fixed top-4 right-6 z-50 transition-all duration-500 ease-out"
+>
+  <ul
+    class="flex gap-4 bg-custom-bg border border-white rounded-full px-4 py-2 backdrop-blur-sm shadow-sm transition-all duration-700 ease-out"
+  >
+    {
+      navItems.map((item) => (
+        <li>
+          <a
+            href={item.href}
+            class="text-xs tracking-wider text-white hover:text-white transition"
+          >
+            {item.label}
+          </a>
+        </li>
+      ))
+    }
+  </ul>
+</nav>

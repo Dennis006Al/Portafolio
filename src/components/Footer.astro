@@ -1,0 +1,69 @@
+---
+import { Github, Linkedin, Mail, FileText, X } from 'lucide-static';
+
+const currentYear = new Date().getFullYear();
+---
+
+<footer
+  class="bg-custom-bg text-zinc-400 text-sm px-6 md:px-12 py-12 border-t border-zinc-800"
+>
+  <div class="max-w-6xl mx-auto grid grid-cols-1 md:grid-cols-6 gap-10">
+    <div class="space-y-4 md:col-span-2 mb-20">
+      <h2 class="text-white font-semibold text-lg">Dennis Landaverde</h2>
+      <p>
+        A frontend developer who loves crafting accessible and fast websites
+        with modern technologies.
+      </p>
+      <div class="flex gap-4 pt-2 text-zinc-500">
+        <a
+          href="https://github.com/tuusuario"
+          class="hover:text-white"
+          aria-label="GitHub"
+        >
+          <span set:html={Github} class="w-5 h-5 inline-block" />
+        </a>
+        <a
+          href="https://linkedin.com/in/tuusuario"
+          class="hover:text-white"
+          aria-label="LinkedIn"
+        >
+          <span set:html={Linkedin} class="w-5 h-5 inline-block" />
+        </a>
+        <a href="/cv.pdf" class="hover:text-white" aria-label="Resume">
+          <span set:html={FileText} class="w-5 h-5 inline-block" />
+        </a>
+        <a
+          href="mailto:dennis@email.com"
+          class="hover:text-white"
+          aria-label="Email"
+        >
+          <span set:html={Mail} class="w-5 h-5 inline-block" />
+        </a>
+      </div>
+      <p class="pt-20">© {currentYear} Dennis. All rights reserved.</p>
+    </div>
+
+    <div>
+      <h3 class="text-white font-medium mb-2">Me</h3>
+      <ul class="space-y-1">
+        <li><a href="#projects" class="hover:text-white">Projects</a></li>
+        <li><a href="#tech" class="hover:text-white">Tech Stack</a></li>
+        <li><a href="#services" class="hover:text-white">Services</a></li>
+        <li><a href="#contact" class="hover:text-white">Contact</a></li>
+      </ul>
+    </div>
+
+    <div>
+      <h3 class="text-white font-medium mb-2">Other ?</h3>
+      ...
+    </div>
+
+    <div class="space-y-4 md:col-span-2">
+      <h3 class="text-white font-medium mb-2">Other ?</h3>
+      <li><a href="/" class="hover:text-white">link ?</a></li>
+      <li><a href="/" class="hover:text-white">link ?</a></li>
+      <li><a href="/" class="hover:text-white">link ?</a></li>
+      <p class="pt-20">Last updated on June 28, 2025 at 11:27 PM UTC−6.</p>
+    </div>
+  </div>
+</footer>
