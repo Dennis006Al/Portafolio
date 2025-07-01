@@ -1,0 +1,49 @@
+---
+interface Props {
+  title: string;
+  description: string;
+  year: number;
+  image: string;
+  link: string;
+}
+
+const { title, description, year, image, link } = Astro.props;
+---
+
+<a
+  href={link}
+  target="_blank"
+  rel="noopener noreferrer"
+  class="spotlight-card relative overflow-hidden rounded-3xl bg-[#0B0F19] border border-[#1a1a1a] shadow-inner p-6 max-w-sm group text-white block transition"
+>
+  <!-- Spotlight Effect -->
+  <div
+    class="spotlight pointer-events-none absolute left-0 top-0 h-full w-full bg-[radial-gradient(200px_circle_at_var(--x,50%)_var(--y,50%),rgba(255,255,255,0.05),transparent)] opacity-0 transition-opacity duration-300 group-hover:opacity-100"
+  >
+  </div>
+
+  <!-- Contenido -->
+  <div class="relative z-10 space-y-3">
+    <!-- Imagen -->
+    <img
+      src={image}
+      alt={title}
+      class="w-full h-52 object-cover rounded-xl border border-zinc-800 transition-transform duration-300 ease-out group-hover:scale-105"
+      loading="lazy"
+    />
+
+    <!-- Año -->
+    <p class="text-lg font-bold text-white">{year}</p>
+
+    <!-- Título -->
+    <h3 class="text-lg font-semibold leading-snug">{title}</h3>
+
+    <!-- Descripción -->
+    <p class="text-sm text-zinc-400 pb-12">{description}</p>
+
+    <!-- Botón estilo animado -->
+    <span class="link-underline inline-block text-sm text-emerald-400 mt-2">
+      Read more
+    </span>
+  </div>
+</a>

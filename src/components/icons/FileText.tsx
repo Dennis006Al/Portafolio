@@ -1,7 +1,7 @@
-// src/components/icons/ArrowRight.tsx
+// src/components/icons/FileText.tsx
 import type { SVGProps } from 'react';
 
-export default function ArrowRight(props: SVGProps<SVGSVGElement>) {
+export default function FileText(props: SVGProps<SVGSVGElement>) {
   return (
     <svg
       aria-hidden="true"
@@ -13,7 +13,7 @@ export default function ArrowRight(props: SVGProps<SVGSVGElement>) {
     >
       <path
         fill="currentColor"
-        d="m14 18l-1.4-1.45L16.15 13H4v-2h12.15L12.6 7.45L14 6l6 6l-6 6z"
+        d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8l-6-6zM6 4h7v5h5v11H6V4zm8 11h-2v2h2v-2zm-4 0H8v2h2v-2zm4-4h-2v2h2v-2zm-4 0H8v2h2v-2zm0-4H8v2h2V7z"
       />
     </svg>
   );

@@ -1,0 +1,130 @@
+---
+import '~/styles/global.css';
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import Keyboard from '../../components/common/Keyboard.astro';
+import SectionTag from '../../components/common/SectionTag.astro';
+import SpotlightCard from '~/components/common/SpotlightCard.astro';
+---
+
+<BaseLayout>
+  <Fragment slot="title">Dennis</Fragment>
+
+  <main class="max-w-4xl pt-28 px-8 md:px-12 pb-16 font-sans">
+    <!-- Sección de presentación -->
+    <section class="flex flex-col gap-8">
+      <div
+        class="enter-animation inline-flex items-center gap-3 border border-[#52525bbf] rounded-full px-3 py-1.5 w-fit"
+      >
+        <span class="relative flex h-3 w-3">
+          <span
+            class="absolute inline-flex h-full w-full animate-ping rounded-full bg-green-500 opacity-75"
+          ></span>
+          <span class="relative inline-flex h-3 w-3 rounded-full bg-green-500"
+          ></span>
+        </span>
+        <span class="text-xs tracking-wider"> Available for projects </span>
+      </div>
+
+      <h1
+        class="enter-animation tracking-tight leading-[1.05] font-serif text-[clamp(2rem,7vw,3.5rem)] text-left"
+      >
+        Hi, I'm Dennis.<br />A frontend engineer.
+      </h1>
+
+      <p class="enter-animation max-w-[600px] text-lg text-zinc-300">
+        I build exceptional digital experiences with React, Astro and modern web
+        technologies. Currently focused on creating accessible, performant
+        interfaces.
+      </p>
+
+      <Keyboard class="enter-animation" />
+    </section>
+
+    <!-- Projects -->
+    <section class="mt-32 scroll-mt-24" id="projects">
+      <SectionTag label="Projects" icon="Briefcase" />
+      <div class="flex flex-col gap-4 mb-[42px] pl-2 mt-8">
+        <h1
+          class="tracking-tight leading-[1.05] font-serif text-[clamp(1rem,7vw,3rem)]"
+        >
+          Work and Learning journey
+        </h1>
+        <p class="max-w-[700px] text-md text-zinc-400">
+          Each project challenged me with unique problems, becoming a stepping
+          stone in my growth. Through research and creativity, I turned
+          obstacles into valuable learning moments.
+        </p>
+      </div>
+      <div class="grid md:grid-cols-2 gap-6">
+        <SpotlightCard
+          title="Athenas GYM"
+          description="Built with Jetpack Compose, it aims to offer an improved reading experience on my laggy phone."
+          year={2025}
+          image="/assets/projects/athens.jpg"
+          link="/"
+        />
+        <SpotlightCard
+          title="Keymar LabelTech"
+          description="Built with Jetpack Compose, it aims to offer an improved reading experience on my laggy phone."
+          year={2025}
+          image="/assets/projects/athens.jpg"
+          link="/"
+        />
+      </div>
+    </section>
+
+    <!-- Technologies -->
+    <section class="mt-32 scroll-mt-24" id="tech">
+      <SectionTag label="Tech stack" icon="Cpu" />
+    </section>
+
+    <!-- Services -->
+    <section class="mt-32 scroll-mt-24" id="services">
+      <SectionTag label="Services" icon="Wrench" />
+    </section>
+
+    <!-- Contact -->
+    <section class="mt-32 scroll-mt-24" id="contact">
+      <SectionTag label="Contact" icon="Mail" />
+    </section>
+  </main>
+
+  <style is:global>
+    .drop-shadow-green {
+      filter: drop-shadow(0px 0px 8px #59ff7e);
+    }
+
+    .enter-animation {
+      opacity: 0.025;
+      animation: fade-in-bottom 0.45s cubic-bezier(0.39, 0.575, 0.565, 1)
+        forwards;
+    }
+
+    .enter-animation:nth-child(2) {
+      animation-delay: 0.2s;
+    }
+
+    .enter-animation:nth-child(3) {
+      animation-delay: 0.4s;
+    }
+
+    .enter-animation:nth-child(4) {
+      animation-delay: 0.6s;
+    }
+
+    @keyframes fade-in-bottom {
+      from {
+        opacity: 0;
+        transform: translateY(20px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+  </style>
+  <!-- @ts-ignore -->
+  <script type="module" is:browser src="/src/lib/scripts/spotlight.ts"></script>
+  <!-- @ts-ignore -->
+  <script is:browser type="module" src="/src/lib/scripts/scrollspy.ts"></script>
+</BaseLayout>

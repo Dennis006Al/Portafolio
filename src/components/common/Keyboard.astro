@@ -1,9 +1,10 @@
 ---
 // src/components/Keyboard.astro
-import Github from './icons/Github.tsx';
-import Linkedin from './icons/Linkedin.tsx';
-import Mail from './icons/Mail.tsx';
-import ArrowRight from './icons/ArrowRight.tsx';
+// Update the path below to the correct location of your Github icon component
+import Github from '../icons/Github.tsx';
+import Linkedin from '../icons/Linkedin.tsx';
+import Mail from '../icons/Mail.tsx';
+import FileText from '../icons/FileText.tsx';
 
 interface Props {
   class?: string;
@@ -26,6 +27,11 @@ const SOCIAL_MEDIA_DATA = [
     name: 'Email',
     href: 'mailto:dennislandaverde13@email.com',
     icon: Mail,
+  },
+  {
+    name: 'Cv',
+    href: 'cv.pdf',
+    icon: FileText,
   },
 ];
 ---
@@ -110,7 +116,7 @@ const SOCIAL_MEDIA_DATA = [
     left: 0;
     top: 50%;
     margin: 10px 15%;
-    background: #fff;
+    background: #ffffff;
     height: 1.5px;
     transition: 0.3s ease-out;
   }

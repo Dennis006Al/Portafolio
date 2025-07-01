@@ -1,31 +1,41 @@
 ---
-import Navbar from '../components/Navbar.astro';
-import Footer from '../components/Footer.astro';
+// src/layouts/BaseLayout.astro
+import Navbar from '../components/layout/Navbar.astro';
+import Footer from '../components/layout/Footer.astro';
 import '../styles/global.css';
+
+// Recibe el idioma como prop
+const { lang = 'es' } = Astro.props;
 ---
 
-<html lang="es">
+<html lang={lang}>
   <head>
     <meta charset="UTF-8" />
-    <title>Dennis</title>
-    <!-- Preload fuentes críticas -->
+    <title>
+      {lang === 'es' ? 'Dennis' : 'Dennis'}
+    </title>
+
+    <!-- Preload fuentes (optimizado) -->
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
       rel="preload"
       href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700&family=Manrope:wght@400;500;700&display=swap"
       as="style"
+      onload="this.onload=null;this.rel='stylesheet'"
     />
-    <link
-      rel="stylesheet"
-      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700&family=Manrope:wght@400;500;700&display=swap"
-    />
+    <noscript>
+      <link
+        rel="stylesheet"
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700&family=Manrope:wght@400;500;700&display=swap"
+      />
+    </noscript>
   </head>
   <body class="bg-custom-bg text-white">
-    <Navbar />
-    <main>
+    <Navbar currentLang={lang} />
+    <main class="min-h-[calc(100vh-120px)]">
       <slot />
     </main>
-    <Footer />
+    <Footer lang={lang} />
   </body>
 </html>
