@@ -28,7 +28,7 @@ const { title, description, year, image, link } = Astro.props;
     <img
       src={image}
       alt={title}
-      class="w-full h-52 object-cover rounded-xl border border-zinc-800 transition-transform duration-300 ease-out group-hover:scale-105"
+      class="w-full aspect-[4/3] object-contain rounded-xl border border-zinc-800 transition-transform duration-300 ease-out group-hover:scale-105"
       loading="lazy"
     />
 
