@@ -5,15 +5,14 @@ import Footer from '../components/layout/Footer.astro';
 import '../styles/global.css';
 
 // Recibe el idioma como prop
-const { lang = 'es' } = Astro.props;
+const { lang = 'en', title = 'Dennis' } = Astro.props;
+const pathname = Astro.url.pathname;
 ---
 
 <html lang={lang}>
   <head>
     <meta charset="UTF-8" />
-    <title>
-      {lang === 'es' ? 'Dennis' : 'Dennis'}
-    </title>
+    <title>{title}</title>
 
     <!-- Preload fuentes (optimizado) -->
     <link rel="preconnect" href="https://fonts.googleapis.com" />
@@ -32,7 +31,7 @@ const { lang = 'es' } = Astro.props;
     </noscript>
   </head>
   <body class="bg-custom-bg text-white">
-    <Navbar currentLang={lang} />
+    <Navbar currentLang={lang} currentPath={pathname} />
     <main class="min-h-[calc(100vh-120px)]">
       <slot />
     </main>
