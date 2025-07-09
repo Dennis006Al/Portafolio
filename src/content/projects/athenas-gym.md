@@ -3,7 +3,7 @@ slug: 'athenas-gym'
 title: 'Athenas GYM'
 url: '#'
 description: "Responsible for support and maintenance of the gym's internal app. Fixed critical bugs in the contract system and improved the digital signing workflow. Built with Angular and Laravel."
-year: 2024
+year: 2025
 image: '/assets/athens-fitness-club.webp'
 featuredImage: '/assets/athenas-dashboard-full.webp'
 ---

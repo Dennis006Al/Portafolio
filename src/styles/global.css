@@ -45,6 +45,7 @@ span {
 .group .link-underline {
   position: relative;
   display: inline-block;
+  width: fit-content;
 }
 
 .group .link-underline::after {

@@ -4,7 +4,14 @@ import BaseLayout from '~/layouts/BaseLayout.astro';
 import SpotlightCard from '~/components/common/SpotlightCard.astro';
 import SectionTag from '../../components/common/SectionTag.astro';
 
-const projects: CollectionEntry<'projects'>[] = await getCollection('projects');
+const projects: CollectionEntry<'projects'>[] = (
+  await getCollection('projects')
+).sort((a: CollectionEntry<'projects'>, b: CollectionEntry<'projects'>) => {
+  if (b.data.year === a.data.year) {
+    return b.data.slug.localeCompare(a.data.slug);
+  }
+  return b.data.year - a.data.year;
+});
 ---
 
 <BaseLayout lang="en" title="Projects">
@@ -41,15 +48,20 @@ const projects: CollectionEntry<'projects'>[] = await getCollection('projects');
       class="grid gap-8 sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-3 mt-16 mb-8"
     >
       {
-        projects.map((project) => (
-          <SpotlightCard
-            title={project.data.title}
-            description={project.data.description}
-            year={project.data.year}
-            image={project.data.image}
-            link={`/projects/${project.data.slug}`}
-          />
-        ))
+        projects.map(
+          (project) => (
+            console.log(project),
+            (
+              <SpotlightCard
+                title={project.data.title}
+                description={project.data.description}
+                year={project.data.year}
+                image={project.data.image}
+                link={`/projects/${project.data.slug}`}
+              />
+            )
+          )
+        )
       }
     </div>
   </main>
