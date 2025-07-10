@@ -8,9 +8,8 @@
 /* Define variables CSS */
 :root {
   --font-primary:
-    'Inter', sans-serif; /* Similar a Helvetica Now (texto general) */
-  --font-secondary:
-    'Manrope', sans-serif; /* Similar a Neue Montreal (títulos) */
+    'Manrope', sans-serif; /* Similar a Helvetica Now (texto general) */
+  --font-secondary: 'Inter', sans-serif; /* Similar a Neue Montreal (títulos) */
 }
 
 /* Aplica las fuentes */

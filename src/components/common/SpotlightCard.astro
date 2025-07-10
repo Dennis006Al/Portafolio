@@ -5,35 +5,92 @@ interface Props {
   year: number;
   image: string;
   link: string;
+  status?: 'published' | 'wip'; // 'published' o 'wip' (work in progress)
 }
 
-const { title, description, year, image, link } = Astro.props;
+const {
+  title,
+  description,
+  year,
+  image,
+  link,
+  status = 'published',
+} = Astro.props;
+const isWorkInProgress = status === 'wip';
 ---
 
-<a
-  href={link}
-  rel="noopener noreferrer"
-  class="group spotlight-card relative overflow-hidden rounded-3xl bg-[#0B0F19] border border-[#1a1a1a] shadow-inner p-6 max-w-sm text-white transition"
->
-  <div
-    class="spotlight pointer-events-none absolute left-0 top-0 h-full w-full bg-[radial-gradient(200px_circle_at_var(--x,50%)_var(--y,50%),rgba(255,255,255,0.05),transparent)] opacity-0 transition-opacity duration-300 group-hover:opacity-100"
-  >
-  </div>
+{
+  isWorkInProgress ? (
+    /* Versión no clickeable para proyectos WIP */
+    <div
+      class={`group spotlight-card relative overflow-hidden rounded-3xl ${isWorkInProgress ? 'bg-[#0B0F19]/70 border-dashed' : 'bg-[#0B0F19]'} border border-[#1a1a1a] shadow-inner p-6 max-w-sm text-white transition cursor-not-allowed`}
+    >
+      <div class="spotlight pointer-events-none absolute left-0 top-0 h-full w-full bg-[radial-gradient(200px_circle_at_var(--x,50%)_var(--y,50%),rgba(255,255,255,0.05),transparent)] opacity-0 transition-opacity duration-300 group-hover:opacity-100" />
 
-  <div class="relative z-10 flex flex-col h-full gap-[0.6rem]">
-    <img
-      src={image}
-      alt={title}
-      class="w-full aspect-[4/3] object-contain rounded-xl border border-zinc-800 transition-transform duration-300 ease-out group-hover:scale-105"
-      loading="lazy"
-    />
+      <div class="relative z-10 flex flex-col h-full gap-[0.6rem]">
+        <div class="w-full aspect-[4/3] flex flex-col items-center justify-center rounded-xl border border-zinc-800 border-dashed bg-gradient-to-br from-zinc-900/50 to-zinc-900/20">
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            width="48"
+            height="48"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="2"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            class="lucide lucide-clock-plus text-zinc-500 mb-2"
+          >
+            <path d="M12 6v6l3.644 1.822" />
+            <path d="M16 19h6" />
+            <path d="M19 16v6" />
+            <path d="M21.92 13.267a10 10 0 1 0-8.653 8.653" />
+          </svg>
+          <span class="text-sm text-zinc-500">Work in progress</span>
+        </div>
 
-    <p class="text-lg font-bold text-white mt-4">{year}</p>
-    <h3 class="text-lg font-semibold leading-snug">{title}</h3>
-    <p class="text-sm text-zinc-400 flex-grow">{description}</p>
+        <p class="text-lg font-bold text-white mt-4">{year}</p>
+        <h3
+          class={`text-lg font-semibold leading-snug ${isWorkInProgress ? 'text-zinc-400' : ''}`}
+        >
+          {title}
+        </h3>
+        <p
+          class={`text-sm ${isWorkInProgress ? 'text-zinc-500' : 'text-zinc-400'} flex-grow`}
+        >
+          {description}
+        </p>
 
-    <span class="mt-4 inline-block text-sm text-emerald-400 link-underline">
-      Read more
-    </span>
-  </div>
-</a>
+        <span class="mt-4 inline-block text-sm text-zinc-500">
+          Available soon
+        </span>
+      </div>
+    </div>
+  ) : (
+    /* Versión clickeable para proyectos publicados */
+    <a
+      href={link}
+      rel="noopener noreferrer"
+      class={`group spotlight-card relative overflow-hidden rounded-3xl bg-[#0B0F19] border border-[#1a1a1a] shadow-inner p-6 max-w-sm text-white transition block`}
+    >
+      <div class="spotlight pointer-events-none absolute left-0 top-0 h-full w-full bg-[radial-gradient(200px_circle_at_var(--x,50%)_var(--y,50%),rgba(255,255,255,0.05),transparent)] opacity-0 transition-opacity duration-300 group-hover:opacity-100" />
+
+      <div class="relative z-10 flex flex-col h-full gap-[0.6rem]">
+        <img
+          src={image}
+          alt={title}
+          class="w-full aspect-[4/3] object-contain rounded-xl border border-zinc-800 transition-transform duration-300 ease-out group-hover:scale-105"
+          loading="lazy"
+        />
+
+        <p class="text-lg font-bold text-white mt-4">{year}</p>
+        <h3 class="text-lg font-semibold leading-snug">{title}</h3>
+        <p class="text-sm text-zinc-400 flex-grow">{description}</p>
+
+        <span class="mt-4 inline-block text-sm text-emerald-400 link-underline">
+          Read more
+        </span>
+      </div>
+    </a>
+  )
+}

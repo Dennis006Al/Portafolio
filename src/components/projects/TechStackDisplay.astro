@@ -1,0 +1,36 @@
+---
+const { stack } = Astro.props as {
+  stack: string[];
+  class?: string;
+};
+
+const icons: Record<string, any> = {
+  Angular: (await import('~/components/icons/stacks/Angular.tsx')).default,
+  Laravel: (await import('~/components/icons/stacks/Laravel.tsx')).default,
+  MySQL: (await import('~/components/icons/stacks/MySQL.tsx')).default,
+};
+---
+
+<div class="flex flex-wrap gap-12 mt-4">
+  {
+    stack.map((tech) => {
+      const Icon = icons[tech];
+
+      return Icon ? (
+        <div
+          class="group relative flex flex-col items-center cursor-pointer"
+          title={tech}
+        >
+          <div class="w-16 h-16 flex items-center justify-center">
+            <Icon class="w-full h-full" />
+          </div>
+          <span class="absolute bottom-[-1.8rem] text-xs opacity-0 group-hover:opacity-100 text-white bg-zinc-800 px-2 py-1 rounded shadow z-10 transition whitespace-nowrap">
+            {tech}
+          </span>
+        </div>
+      ) : (
+        <div class="text-xs text-red-500">Missing icon: {tech}</div>
+      );
+    })
+  }
+</div>
