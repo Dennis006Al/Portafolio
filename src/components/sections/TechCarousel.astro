@@ -1,0 +1,137 @@
+---
+import AngularIcon from '~/components/icons/stacks/Angular.tsx';
+import RailsIcon from '~/components/icons/stacks/Rails.tsx';
+import JSIcon from '~/components/icons/stacks/JS.tsx';
+import TSIcon from '~/components/icons/stacks/TS.tsx';
+import CSSIcon from '~/components/icons/stacks/CSS.tsx';
+import GitIcon from '~/components/icons/stacks/Git.tsx';
+import TailwindCSSIcon from '~/components/icons/stacks/TailwindCSS.tsx';
+import MySQLIcon from '~/components/icons/stacks/MySQL.tsx';
+import JavaIcon from '~/components/icons/stacks/Java.tsx';
+import NestIcon from '~/components/icons/stacks/Nest.tsx';
+
+const techIcons = [
+  { icon: AngularIcon, name: 'Angular' },
+  { icon: RailsIcon, name: 'Ruby on Rails' },
+  { icon: JSIcon, name: 'JavaScript' },
+  { icon: TSIcon, name: 'TypeScript' },
+  { icon: CSSIcon, name: 'CSS / SCSS' },
+  { icon: GitIcon, name: 'Git' },
+  { icon: TailwindCSSIcon, name: 'Tailwind CSS' },
+  { icon: MySQLIcon, name: 'MySQL' },
+  { icon: JavaIcon, name: 'Java' },
+  { icon: NestIcon, name: 'NestJS' },
+];
+---
+
+<div class="carousel-wrapper">
+  <div class="carousel-track" id="tech-carousel">
+    {
+      Array(2)
+        .fill(0)
+        .map(() =>
+          techIcons.map(({ icon: Icon, name }) => (
+            <div class="carousel-icon group cursor-pointer" title={name}>
+              <Icon className="icon-transform" />
+              <span class="tooltip">{name}</span>
+            </div>
+          ))
+        )
+    }
+  </div>
+</div>
+
+<style>
+  .carousel-icon svg {
+    width: 4.5rem;
+    height: 4.5rem;
+    color: rgba(255, 255, 255, 0.8);
+    transition: all 0.3s ease;
+  }
+
+  .carousel-icon:hover svg {
+    color: #34d399;
+    transform: scale(1.15);
+  }
+
+  .tooltip {
+    transform: scale(1) !important;
+  }
+</style>
+<!-- @ts-ignore -->
+<script type="module" is:browser>
+  const track = document.getElementById('tech-carousel');
+  let speed = 1.1;
+  let x = 0;
+  let isPaused = false;
+
+  function animate() {
+    if (!isPaused) {
+      x -= speed;
+      track.style.transform = `translateX(${x}px)`;
+
+      const firstHalf = track.scrollWidth / 2;
+      if (Math.abs(x) >= firstHalf) {
+        x = 0;
+      }
+    }
+    requestAnimationFrame(animate);
+  }
+
+  track.addEventListener('mouseenter', () => (isPaused = true));
+  track.addEventListener('mouseleave', () => (isPaused = false));
+
+  animate();
+</script>
+
+<style>
+  .carousel-wrapper {
+    overflow: hidden;
+    width: 100%;
+    padding: 1.5rem 0;
+  }
+
+  .carousel-track {
+    display: flex;
+    gap: 2.5rem;
+    will-change: transform;
+  }
+
+  .carousel-icon {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    min-width: 5rem;
+    height: 5rem;
+  }
+
+  .carousel-icon svg {
+    width: 4.5rem;
+    height: 4.5rem;
+    color: rgba(255, 255, 255, 0.8);
+    transition: color 0.3s;
+  }
+
+  .carousel-icon:hover svg {
+    color: #34d399;
+  }
+
+  .tooltip {
+    position: absolute;
+    bottom: -1.5rem;
+    background: #27272a;
+    color: white;
+    font-size: 0.75rem;
+    padding: 0.25rem 0.5rem;
+    border-radius: 4px;
+    white-space: nowrap;
+    opacity: 0;
+    transition: opacity 0.3s;
+    z-index: 10;
+  }
+
+  .carousel-icon:hover .tooltip {
+    opacity: 1;
+  }
+</style>

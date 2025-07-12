@@ -17,9 +17,13 @@ const { details } = Astro.props as { details: Details };
   <p class="text-zinc-400">{details.overview}</p>
 
   <h2 class="text-xl font-bold text-white mt-12 mb-4">Objective</h2>
-  <p class="text-zinc-400">{details.objective}</p>
+  {
+    details.objective
+      .split('\n\n')
+      .map((paragraph) => <p class="text-zinc-400 mb-4">{paragraph}</p>)
+  }
 
-  <h2 class="text-xl font-bold text-white mt-12 mb-4">Tech Stack</h2>
+  <h2 class="text-xl font-bold text-white mt-12 mb-4">Tech Stack Used</h2>
   <TechStackDisplay stack={details.techStack} />
 
   <h2 class="text-xl font-bold text-white mt-12 mb-4">Key Contributions</h2>

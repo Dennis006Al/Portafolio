@@ -4,6 +4,9 @@ import BaseLayout from '../../layouts/BaseLayout.astro';
 import Keyboard from '../../components/common/Keyboard.astro';
 import SectionTag from '../../components/common/SectionTag.astro';
 import SpotlightCard from '~/components/common/SpotlightCard.astro';
+import TechStackCard from '~/components/sections/TechStackCard.astro';
+import ContactForm from '~/components/contact/ContactForm.astro';
+import Services from '~/components/sections/Servicios.astro';
 ---
 
 <BaseLayout lang="en" title="Dennis">
@@ -115,25 +118,13 @@ import SpotlightCard from '~/components/common/SpotlightCard.astro';
     <!-- Technologies -->
     <section class="mt-32 scroll-mt-[7rem]" id="tech">
       <SectionTag label="Tech stack" icon="Cpu" />
-      <h2
-        id="hero-title"
-        class="tracking-tight leading-[1.05] font-serif text-[clamp(1rem,3vw,3rem)]
- mt-8"
-      >
-        Tech stacks I'm familiar with
-      </h2>
+      <TechStackCard />
     </section>
 
     <!-- Services -->
     <section class="mt-32 scroll-mt-[7rem]" id="services">
       <SectionTag label="Services" icon="Wrench" />
-      <h2
-        id="hero-title"
-        class="tracking-tight leading-[1.05] font-serif text-[clamp(1rem,3vw,3rem)]
- mt-8"
-      >
-        What I Can Do for You
-      </h2>
+      <Services />
     </section>
 
     <!-- Contact -->
@@ -141,11 +132,12 @@ import SpotlightCard from '~/components/common/SpotlightCard.astro';
       <SectionTag label="Contact" icon="Mail" />
       <h2
         id="hero-title"
-        class="tracking-tight leading-[1.05] font-serif text-[clamp(1rem,3vw,3rem)]
+        class="tracking-tight leading-[1.05] font-serif text-[clamp(1rem,3vw,3rem)] mb-8
  mt-8"
       >
         Have a Project in Mind?
       </h2>
+      <ContactForm />
     </section>
   </main>
 

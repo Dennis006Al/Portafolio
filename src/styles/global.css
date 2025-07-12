@@ -117,3 +117,12 @@ span {
 a.website-button:hover {
   box-shadow: 0 0 8px rgba(255, 255, 255, 0.15);
 }
+
+.animate-scroll-left svg {
+  width: 5rem;
+  height: 5rem;
+  object-fit: contain;
+  aspect-ratio: 1;
+  display: block;
+  padding: 0.5rem;
+}

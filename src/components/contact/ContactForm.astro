@@ -1,0 +1,106 @@
+<div
+  id="contact"
+  class="spotlight-card group relative overflow-hidden rounded-2xl border border-[#1a1a1a] shadow-inner p-6 md:p-8 transition bg-[#0B0F19] mb-12"
+>
+  <!-- Spotlight efecto -->
+  <div
+    class="spotlight pointer-events-none absolute inset-0 bg-[radial-gradient(200px_circle_at_var(--x,50%)_var(--y,50%),rgba(255,255,255,0.05),transparent)] opacity-0 transition-opacity duration-300 group-hover:opacity-100 z-10"
+  >
+  </div>
+
+  <div class="relative z-20 grid md:grid-cols-2 gap-8 items-center">
+    <!-- Left: Formulario -->
+    <div>
+      <h2 class="text-white text-xl font-semibold mb-4">Let's work together</h2>
+      <p class="text-zinc-400 mb-6 max-w-lg">
+        Have a question, collaboration idea or just want to say hi? Fill out the
+        form and I’ll get back to you as soon as possible.
+      </p>
+
+      <form
+        action="https://formsubmit.co/dennislandaverde13@email.com"
+        method="POST"
+        class="space-y-4"
+      >
+        <!-- Hidden Configs -->
+        <input type="hidden" name="_captcha" value="false" />
+        <input type="hidden" name="_template" value="table" />
+        <input
+          type="hidden"
+          name="_next"
+          value="https://yourdomain.com/thanks"
+        />
+
+        <div>
+          <label for="name" class="block text-sm text-zinc-300 mb-1">Name</label
+          >
+          <input
+            type="text"
+            name="name"
+            id="name"
+            required
+            class="w-full bg-transparent border border-white/10 text-white rounded-lg px-4 py-2 placeholder-zinc-500 focus:outline-none focus:ring-2 focus:ring-emerald-400"
+            placeholder="Your name"
+          />
+        </div>
+
+        <div>
+          <label for="email" class="block text-sm text-zinc-300 mb-1"
+            >Email</label
+          >
+          <input
+            type="email"
+            name="email"
+            id="email"
+            required
+            class="w-full bg-transparent border border-white/10 text-white rounded-lg px-4 py-2 placeholder-zinc-500 focus:outline-none focus:ring-2 focus:ring-emerald-400"
+            placeholder="you@example.com"
+          />
+        </div>
+
+        <div>
+          <label for="message" class="block text-sm text-zinc-300 mb-1"
+            >Message</label
+          >
+          <textarea
+            name="message"
+            id="message"
+            required
+            rows="5"
+            class="w-full bg-transparent border border-white/10 text-white rounded-lg px-4 py-2 placeholder-zinc-500 focus:outline-none focus:ring-2 focus:ring-emerald-400"
+            placeholder="Tell me about your project or idea..."></textarea>
+        </div>
+
+        <button
+          type="submit"
+          class="mt-4 inline-flex items-center justify-center gap-2 px-5 py-2 rounded-lg bg-emerald-900/30 text-white font-medium hover:bg-emerald-600 transition border border-emerald-800"
+        >
+          Send Message
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            class="w-4 h-4"
+            fill="none"
+            viewBox="0 0 24 24"
+            stroke="currentColor"
+          >
+            <path
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              stroke-width="2"
+              d="M14 5l7 7m0 0l-7 7m7-7H3"></path>
+          </svg>
+        </button>
+      </form>
+    </div>
+
+    <!-- Right: Imagen decorativa -->
+    <div class="hidden md:block">
+      <img
+        src="/assets/services/form-illustration.webp"
+        alt="Contact Illustration"
+        class="w-full h-auto rounded-lg object-contain opacity-80 hover:opacity-100 transition"
+        loading="lazy"
+      />
+    </div>
+  </div>
+</div>
