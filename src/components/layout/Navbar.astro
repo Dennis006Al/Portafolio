@@ -11,6 +11,11 @@ const { currentPath } = Astro.props;
 const showNavItems =
   currentPath === '/' || currentPath === '/es' || currentPath === '/en';
 
+// Detectar idioma actual y el alternativo
+const currentLang = currentPath.startsWith('/es') ? 'es' : 'en';
+const switchTo = currentLang === 'en' ? 'es' : 'en';
+const switchLabel = currentLang === 'en' ? 'English' : 'Español';
+
 const navbarClasses = `fixed top-0 left-0 w-full min-h-[70px] z-50 px-6 py-5 backdrop-blur bg-gradient-to-b from-black/70 to-transparent ${
   showNavItems ? 'border-b border-zinc-800' : ''
 }`;
@@ -31,5 +36,32 @@ const navbarClasses = `fixed top-0 left-0 w-full min-h-[70px] z-50 px-6 py-5 bac
           </li>
         ))
     }
+
+    <!-- Botón de cambio de idioma -->
+    <li>
+      <a
+        href={`/${switchTo}`}
+        class="enter-animation text-sm text-white border border-white/20 px-3 py-1 rounded hover:bg-white hover:text-black transition flex items-center gap-2"
+      >
+        <!-- Icono a la izquierda -->
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          class="w-4 h-4"
+          fill="none"
+          viewBox="0 0 24 24"
+          stroke="currentColor"
+        >
+          <path d="M21.54 15H17a2 2 0 0 0-2 2v4.54"></path>
+          <path
+            d="M7 3.34V5a3 3 0 0 0 3 3a2 2 0 0 1 2 2c0 1.1.9 2 2 2a2 2 0 0 0 2-2c0-1.1.9-2 2-2h3.17"
+          ></path>
+          <path
+            d="M11 21.95V18a2 2 0 0 0-2-2a2 2 0 0 1-2-2v-1a2 2 0 0 0-2-2H2.05"
+          ></path>
+          <circle cx="12" cy="12" r="10"></circle>
+        </svg>
+        {switchLabel}
+      </a>
+    </li>
   </ul>
 </nav>

@@ -6,6 +6,7 @@ interface Props {
   image: string;
   link: string;
   status?: 'published' | 'wip'; // 'published' o 'wip' (work in progress)
+  lang?: 'en' | 'es';
 }
 
 const {
@@ -15,8 +16,10 @@ const {
   image,
   link,
   status = 'published',
+  lang = 'es',
 } = Astro.props;
 const isWorkInProgress = status === 'wip';
+const readMoreText = lang === 'es' ? 'Leer más' : 'Read more';
 ---
 
 {
@@ -88,7 +91,7 @@ const isWorkInProgress = status === 'wip';
         <p class="text-sm text-zinc-400 flex-grow">{description}</p>
 
         <span class="mt-4 inline-block text-sm text-emerald-400 link-underline">
-          Read more
+          {readMoreText}
         </span>
       </div>
     </a>

@@ -1,4 +1,7 @@
 ---
+const currentPath = Astro.url.pathname;
+const currentLang = currentPath.startsWith('/es') ? 'es' : 'en';
+
 import { Github, Linkedin, Mail, FileText } from 'lucide-static';
 import GitHubLastUpdated from '../../utils/GitHubLastUpdated.astro';
 const currentYear = new Date().getFullYear();
@@ -51,9 +54,19 @@ const currentYear = new Date().getFullYear();
       <h3 class="text-white font-medium mb-2">Me</h3>
       <ul class="space-y-1">
         <li><a href="/projects" class="hover:text-white">Projects</a></li>
-        <li><a href="/" class="hover:text-white">Tech Stack</a></li>
-        <li><a href="/" class="hover:text-white">Services</a></li>
-        <li><a href="/" class="hover:text-white">Contact</a></li>
+        <li>
+          <a href={`/${currentLang}#tech`} class="hover:text-white"
+            >Tech Stack</a
+          >
+        </li>
+        <li>
+          <a href={`/${currentLang}#services`} class="hover:text-white"
+            >Services</a>
+        </li>
+        <li>
+          <a href={`/${currentLang}#contact`} class="hover:text-white"
+            >Contact</a>
+        </li>
       </ul>
     </div>
 

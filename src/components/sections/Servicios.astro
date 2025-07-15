@@ -1,10 +1,53 @@
+---
+// Services.astro
+interface Props {
+  lang?: 'en' | 'es';
+}
+const { lang = 'en' } = Astro.props;
+
+const sectionTitle =
+  lang === 'es' ? 'Servicios que ofrezco' : 'Services I Offer';
+const sectionDescription =
+  lang === 'es'
+    ? 'Estas son las áreas donde puedo aportar más valor a tu equipo o proyecto. Ya sea creando un nuevo producto o mejorando uno existente, puedo ayudarte.'
+    : "These are the areas where I can bring the most value to your team or project. Whether you're building a new product or improving an existing one, I can help.";
+
+// Card 1
+const card1Title =
+  lang === 'es'
+    ? 'Desarrollo de sitios web personalizados'
+    : 'Custom Website Development';
+const card1Text =
+  lang === 'es'
+    ? 'Diseño y desarrollo sitios web de alto rendimiento para negocios, emprendedores y marcas personales. Selecciono tecnologías adecuadas (Astro, Angular, Laravel, etc.) para asegurar velocidad, escalabilidad y optimización SEO.'
+    : "I design and build high-performance websites tailored to businesses, entrepreneurs, and personal brands. Whether it's a landing page, corporate site, or a small online store, I select the most suitable technologies (Astro, Angular, Laravel, etc.) to ensure speed, scalability, and SEO optimization.";
+
+// Card 2
+const card2Title =
+  lang === 'es'
+    ? 'Desarrollador y consultor frontend'
+    : 'Frontend Contractor & Consultant';
+const card2Text =
+  lang === 'es'
+    ? 'Colaboro con equipos como desarrollador frontend, ofreciendo experiencia en Angular, TypeScript, TailwindCSS y arquitecturas modernas. Disponible para contratos freelance, consultorías o mejoras de UI/UX y rendimiento frontend.'
+    : 'I collaborate with teams as a frontend developer, offering expertise in Angular, TypeScript, TailwindCSS, and modern web architectures. Available for freelance contracts, long-term engagements, or consulting on UI/UX improvements, component architecture, and frontend performance.';
+
+// Card 3
+const card3Title =
+  lang === 'es'
+    ? 'Soporte técnico y mantenimiento'
+    : 'Technical Support & Maintenance';
+const card3Text =
+  lang === 'es'
+    ? 'Brindo asistencia técnica continua: corrección de errores, refactorización, actualización de dependencias y mejoras menores. Ideal para equipos con código legacy o negocios que necesitan mantenimiento regular.'
+    : 'I provide ongoing technical assistance, including bug fixing, code refactoring, dependency upgrades, and minor enhancements. Ideal for teams with legacy codebases or for businesses needing regular updates and monitoring for their websites or internal tools.';
+---
+
 <section class="mt-12 scroll-mt-[7rem]" id="services">
   <div class="mb-8">
-    <h2 class="text-white text-2xl font-semibold mb-2">Services I Offer</h2>
+    <h2 class="text-white text-2xl font-semibold mb-2">{sectionTitle}</h2>
     <p class="text-zinc-400 max-w-2xl">
-      These are the areas where I can bring the most value to your team or
-      project. Whether you're building a new product or improving an existing
-      one, I can help.
+      {sectionDescription}
     </p>
   </div>
 
@@ -25,14 +68,10 @@
             class="object-contain rounded-lg w-full object-cover"
           />
           <h3 class="text-white font-semibold text-lg mb-2 mt-4">
-            Custom Website Development
+            {card1Title}
           </h3>
           <p class="text-zinc-400 text-sm flex-grow h-full">
-            I design and build high-performance websites tailored to businesses,
-            entrepreneurs, and personal brands. Whether it's a landing page,
-            corporate site, or a small online store, I select the most suitable
-            technologies (Astro, Angular, Laravel, etc.) to ensure speed,
-            scalability, and SEO optimization.
+            {card1Text}
           </p>
         </div>
       </div>
@@ -54,14 +93,10 @@
             class="object-contain rounded-lg w-full object-cover"
           />
           <h3 class="text-white font-semibold text-lg mb-2 mt-4">
-            Frontend Contractor & Consultant
+            {card2Title}
           </h3>
           <p class="text-zinc-400 text-sm flex-grow h-full">
-            I collaborate with teams as a frontend developer, offering expertise
-            in Angular, TypeScript, TailwindCSS, and modern web architectures.
-            Available for freelance contracts, long-term engagements, or
-            consulting on UI/UX improvements, component architecture, and
-            frontend performance.
+            {card2Text}
           </p>
         </div>
       </div>
@@ -83,13 +118,10 @@
             class="object-contain rounded-lg w-full object-cover"
           />
           <h3 class="text-white font-semibold text-lg mb-2 mt-4">
-            Technical Support & Maintenance
+            {card3Title}
           </h3>
           <p class="text-zinc-400 text-sm flex-grow h-full">
-            I provide ongoing technical assistance, including bug fixing, code
-            refactoring, dependency upgrades, and minor enhancements. Ideal for
-            teams with legacy codebases or for businesses needing regular
-            updates and monitoring for their websites or internal tools.
+            {card3Text}
           </p>
         </div>
       </div>

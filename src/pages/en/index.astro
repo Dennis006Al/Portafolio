@@ -1,4 +1,7 @@
 ---
+const currentPath = Astro.url.pathname;
+const currentLang = currentPath.startsWith('/es') ? 'es' : 'en';
+
 import '~/styles/global.css';
 import BaseLayout from '../../layouts/BaseLayout.astro';
 import Keyboard from '../../components/common/Keyboard.astro';
@@ -39,7 +42,7 @@ import Services from '~/components/sections/Servicios.astro';
         performant interfaces.
       </p>
 
-      <Keyboard class="enter-animation" />
+      <Keyboard class="enter-animation" lang={currentLang} />
     </section>
 
     <!-- Projects -->
@@ -66,11 +69,11 @@ import Services from '~/components/sections/Servicios.astro';
 
         <!-- Botón superior derecho -->
         <a
-          href="/projects"
-          class="group btn-glow-pulse relative inline-flex h-12 items-center justify-center overflow-hidden rounded-md bg-neutral-950 px-6 font-medium text-neutral-200 border border-white transition-all duration-300 ease-out"
+          href={`/${currentLang}/projects`}
+          class="group btn-glow-pulse relative inline-flex items-center justify-center overflow-hidden rounded-md bg-neutral-950 px-4 sm:px-6 py-3 text-sm sm:text-base font-medium text-neutral-200 border border-white transition-all duration-300 ease-out w-full sm:w-auto"
         >
           <div
-            class="translate-x-0 opacity-100 transition-all duration-300 group-hover:-translate-x-[150%] group-hover:opacity-0"
+            class="whitespace-nowrap translate-x-0 opacity-100 transition-all duration-300 group-hover:-translate-x-[150%] group-hover:opacity-0"
           >
             View all projects
           </div>
@@ -84,7 +87,7 @@ import Services from '~/components/sections/Servicios.astro';
               viewBox="0 0 15 15"
               fill="none"
               xmlns="http://www.w3.org/2000/svg"
-              class="h-6 w-6"
+              class="h-5 w-5"
             >
               <path
                 d="M8.14645 3.14645C8.34171 2.95118 8.65829 2.95118 8.85355 3.14645L12.8536 7.14645C13.0488 7.34171 13.0488 7.65829 12.8536 7.85355L8.85355 11.8536C8.65829 12.0488 8.34171 12.0488 8.14645 11.8536C7.95118 11.6583 7.95118 11.3417 8.14645 11.1464L11.2929 8H2.5C2.22386 8 2 7.77614 2 7.5C2 7.22386 2.22386 7 2.5 7H11.2929L8.14645 3.85355C7.95118 3.65829 7.95118 3.34171 8.14645 3.14645Z"
@@ -104,6 +107,7 @@ import Services from '~/components/sections/Servicios.astro';
           year={2024}
           image="/assets/keymar-label-tech.webp"
           link="/projects/keymar-labeltech"
+          lang={currentLang}
         />
         <SpotlightCard
           title="Athenas GYM"
@@ -111,6 +115,7 @@ import Services from '~/components/sections/Servicios.astro';
           year={2025}
           image="/assets/athens-fitness-club.webp"
           link="/projects/athenas-gym"
+          lang={currentLang}
         />
       </div>
     </section>
@@ -118,13 +123,13 @@ import Services from '~/components/sections/Servicios.astro';
     <!-- Technologies -->
     <section class="mt-32 scroll-mt-[7rem]" id="tech">
       <SectionTag label="Tech stack" icon="Cpu" />
-      <TechStackCard />
+      <TechStackCard lang={currentLang} />
     </section>
 
     <!-- Services -->
     <section class="mt-32 scroll-mt-[7rem]" id="services">
       <SectionTag label="Services" icon="Wrench" />
-      <Services />
+      <Services lang={currentLang} />
     </section>
 
     <!-- Contact -->
@@ -135,9 +140,9 @@ import Services from '~/components/sections/Servicios.astro';
         class="tracking-tight leading-[1.05] font-serif text-[clamp(1rem,3vw,3rem)] mb-8
  mt-8"
       >
-        Have a Project in Mind?
+        ¿Have a Project in Mind?
       </h2>
-      <ContactForm />
+      <ContactForm lang={currentLang} />
     </section>
   </main>
 

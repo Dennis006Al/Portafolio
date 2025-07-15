@@ -1,4 +1,7 @@
 ---
+const currentPath = Astro.url.pathname;
+const currentLang = currentPath.startsWith('/es') ? 'es' : 'en';
+
 import { getCollection, type CollectionEntry } from 'astro:content';
 import BaseLayout from '~/layouts/BaseLayout.astro';
 import SpotlightCard from '~/components/common/SpotlightCard.astro';
@@ -21,7 +24,7 @@ const projects: CollectionEntry<'projects'>[] = (
       <!-- Botón de regreso a Home -->
       <div class="mb-8">
         <a
-          href="/"
+          href={`/${currentLang}`}
           class="group inline-flex items-center text-base text-white relative"
         >
           <svg

@@ -1,5 +1,19 @@
 ---
-// TechStackCard.astro
+interface Props {
+  lang?: 'en' | 'es';
+}
+
+const { lang = 'es' } = Astro.props;
+const title =
+  lang === 'es' ? 'Tecnologías que manejo' : "Tech stacks I'm familiar with";
+const description =
+  lang === 'es'
+    ? 'Principalmente enfocado en Angular y desarrollo frontend, con experiencia sólida en entornos fullstack.'
+    : 'Mostly focused on Angular and frontend development, with solid experience across backend and full-stack environments.';
+
+const sidebarLabel =
+  lang === 'es' ? 'Explorando actualmente' : 'Currently exploring';
+
 import TechCarousel from './TechCarousel.astro';
 ---
 
@@ -20,12 +34,11 @@ import TechCarousel from './TechCarousel.astro';
     <!-- Contenido -->
     <div class="relative z-20">
       <h2 class="text-white text-xl font-semibold mb-4">
-        Tech stacks I'm familiar with
+        {title}
       </h2>
       <TechCarousel />
       <p class="text-zinc-400 mt-6">
-        Mostly focused on Angular and frontend development, with solid
-        experience across backend and full-stack environments.
+        {description}
       </p>
     </div>
   </div>
@@ -41,7 +54,7 @@ import TechCarousel from './TechCarousel.astro';
     </div>
     <div class="relative z-20 text-center">
       <p class="text-sm uppercase text-white mb-2 tracking-widest">
-        Currently exploring
+        {sidebarLabel}
       </p>
 
       <div class="flex flex-col justify-center items-center space-y-4 mb-4">
