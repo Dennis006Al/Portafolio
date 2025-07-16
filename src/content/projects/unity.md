@@ -1,22 +1,44 @@
 ---
-slug: 'residential app'
-title: 'Unity Residential App'
-status: 'wip' # o 'published' when is ready
+slug: 'unity-residential-app'
+status: 'wip'
 url: '#'
-description: 'Stay tuned, cooking up something amazing!'
 year: 2025
-image: '/assets/'
-featuredImage: '/assets/'
+image: '/assets/' # Reemplaza con ruta real
+featuredImage: '/assets/' # Reemplaza con ruta real
+
+title:
+  en: 'Unity Residential App'
+  es: 'App Residencial Unity'
+
+description:
+  en: 'Stay tuned, cooking up something amazing!'
+  es: 'Pronto disponible, ¡algo increíble está en camino!'
+
 details:
-  overview: '#'
-  objective: '#'
+  overview:
+    en: '#'
+    es: '#'
+
+  objective:
+    en: '#'
+    es: '#'
+
   techStack:
     - 'Dart Angular'
     - 'NestJS'
     - 'SQL'
+
   contributions:
-    - '#'
-    - '#'
-    - '#'
-  reflection: '#'
+    en:
+      - '#'
+      - '#'
+      - '#'
+    es:
+      - '#'
+      - '#'
+      - '#'
+
+  reflection:
+    en: '#'
+    es: '#'
 ---

@@ -40,7 +40,9 @@ const navbarClasses = `fixed top-0 left-0 w-full min-h-[70px] z-50 px-6 py-5 bac
     <!-- Botón de cambio de idioma -->
     <li>
       <a
-        href={`/${switchTo}`}
+        href={currentLang === 'en'
+          ? currentPath.replace(/^\/en/, '/es')
+          : currentPath.replace(/^\/es/, '/en')}
         class="enter-animation text-sm text-white border border-white/20 px-3 py-1 rounded hover:bg-white hover:text-black transition flex items-center gap-2"
       >
         <!-- Icono a la izquierda -->

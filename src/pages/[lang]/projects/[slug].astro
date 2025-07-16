@@ -1,38 +1,41 @@
 ---
 import { getCollection, type CollectionEntry } from 'astro:content';
-import { AstroError } from 'astro/errors';
-import BaseLayout from '~/layouts/BaseLayout.astro';
-import ProjectDetails from '~/components/projects/ProjectDetails.astro';
+import BaseLayout from '../../../layouts/BaseLayout.astro';
+import ProjectDetails from '../../../components/projects/ProjectDetails.astro';
 
-// Exportar los slugs para que Astro genere las páginas
 export async function getStaticPaths() {
-  const projects: CollectionEntry<'projects'>[] =
-    await getCollection('projects');
+  const projects = await getCollection('projects');
 
-  return projects.map((project) => ({
-    params: { slug: project.data.slug },
-    props: { project },
-  }));
+  const paths = projects.flatMap((project: any) => {
+    return ['en', 'es'].map((lang) => ({
+      params: {
+        lang,
+        slug: project.data.slug,
+      },
+      props: {
+        project,
+        lang,
+      },
+    }));
+  });
+
+  return paths;
 }
 
-// Obtener el slug dinámico
-const { project } = Astro.props;
-
-if (!project) {
-  throw new AstroError(`Project not found`);
-}
+const { project, lang } = Astro.props as {
+  project: CollectionEntry<'projects'>;
+  lang: 'en' | 'es';
+};
 
 const { title, description, year, image, featuredImage, url, details } =
   project.data;
 ---
 
-<BaseLayout>
-  <Fragment slot="title">{title}</Fragment>
-
+<BaseLayout title={`${title[lang]} · ${year}`}>
   <main class="w-full px-4 sm:px-8 lg:px-32 2xl:px-64 pt-24 font-sans">
     <p class="text-zinc-400 mb-2 text-lg">{year}</p>
-    <h1 class="text-4xl font-bold text-white mb-4">{title}</h1>
-    <p class="text-md text-zinc-300 mb-8 max-w-5xl">{description}</p>
+    <h1 class="text-4xl font-bold text-white mb-4">{title[lang]}</h1>
+    <p class="text-md text-zinc-300 mb-8 max-w-5xl">{description[lang]}</p>
     {
       url && url !== '#' && (
         <a
@@ -65,16 +68,24 @@ const { title, description, year, image, featuredImage, url, details } =
 
     <img
       src={featuredImage || image}
-      alt={title}
+      alt={title[lang]}
       class="w-full max-w-5xl rounded-xl border border-zinc-800 mb-6 shadow-[0_0_10px_rgba(255,255,255,0.2),0_0_20px_rgba(255,255,255,0.10)]"
       loading="lazy"
     />
-    <ProjectDetails details={details} />
+    <ProjectDetails
+      details={{
+        overview: details.overview[lang],
+        objective: details.objective[lang],
+        techStack: details.techStack,
+        contributions: details.contributions[lang],
+        reflection: details.reflection[lang],
+      }}
+    />
 
     <!-- Botón de regreso a /projects -->
     <div class="mt-8 mb-8">
       <a
-        href="/projects"
+        href={`/${lang}/projects`}
         class="group inline-flex items-center text-base text-white relative"
       >
         <svg
@@ -90,7 +101,11 @@ const { title, description, year, image, featuredImage, url, details } =
           class="ml-2 transition-transform duration-300 group-hover:-translate-x-1"
           ><path d="m12 19-7-7 7-7"></path><path d="M19 12H5"></path></svg
         >
-        <span class="link-underline-dotted">Explore more projects</span>
+        <span class="link-underline-dotted"
+          >{
+            lang === 'es' ? 'Explorar mas projectos' : 'Explore more projects'
+          }</span
+        >
       </a>
     </div>
   </main>

@@ -11,4 +11,5 @@ export default defineConfig({
       prefixDefaultLocale: false, // Permite /es y /en
     },
   },
+  trailingSlash: 'ignore',
 });

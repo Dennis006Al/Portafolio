@@ -20,6 +20,9 @@ const {
 } = Astro.props;
 const isWorkInProgress = status === 'wip';
 const readMoreText = lang === 'es' ? 'Leer más' : 'Read more';
+const workInProgressText =
+  lang === 'es' ? 'Trabajo en Progreso' : 'Work in progress';
+const avalibleSoonText = lang === 'es' ? 'Disponible pronto' : 'Available soon';
 ---
 
 {
@@ -49,7 +52,7 @@ const readMoreText = lang === 'es' ? 'Leer más' : 'Read more';
             <path d="M19 16v6" />
             <path d="M21.92 13.267a10 10 0 1 0-8.653 8.653" />
           </svg>
-          <span class="text-sm text-zinc-500">Work in progress</span>
+          <span class="text-sm text-zinc-500">{workInProgressText}</span>
         </div>
 
         <p class="text-lg font-bold text-white mt-4">{year}</p>
@@ -65,7 +68,7 @@ const readMoreText = lang === 'es' ? 'Leer más' : 'Read more';
         </p>
 
         <span class="mt-4 inline-block text-sm text-zinc-500">
-          Available soon
+          {avalibleSoonText}
         </span>
       </div>
     </div>

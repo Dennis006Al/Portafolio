@@ -2,6 +2,27 @@
 const currentPath = Astro.url.pathname;
 const currentLang = currentPath.startsWith('/es') ? 'es' : 'en';
 
+const t = {
+  description:
+    currentLang === 'es'
+      ? 'Desarrollador frontend apasionado por crear sitios accesibles y rápidos con tecnologías modernas.'
+      : 'A frontend developer who loves crafting accessible and fast websites with modern technologies.',
+
+  sectionOther: currentLang === 'es' ? 'Otros' : 'Other',
+
+  nav: {
+    projects: currentLang === 'es' ? 'Proyectos' : 'Projects',
+    tech: currentLang === 'es' ? 'Tecnologías' : 'Tech Stack',
+    services: currentLang === 'es' ? 'Servicios' : 'Services',
+    contact: currentLang === 'es' ? 'Contacto' : 'Contact',
+  },
+
+  copyright:
+    currentLang === 'es'
+      ? 'Todos los derechos reservados.'
+      : 'All rights reserved.',
+};
+
 import { Github, Linkedin, Mail, FileText } from 'lucide-static';
 import GitHubLastUpdated from '../../utils/GitHubLastUpdated.astro';
 const currentYear = new Date().getFullYear();
@@ -16,8 +37,7 @@ const currentYear = new Date().getFullYear();
     <div class="space-y-4 md:col-span-2">
       <h2 class="text-white font-semibold text-lg">Dennis Landaverde</h2>
       <p>
-        A frontend developer who loves crafting accessible and fast websites
-        with modern technologies.
+        {t.description}
       </p>
       <div class="flex gap-4 pt-2 text-zinc-500">
         <a
@@ -34,7 +54,12 @@ const currentYear = new Date().getFullYear();
         >
           <span set:html={Linkedin} class="w-5 h-5 inline-block" />
         </a>
-        <a href="/cv.pdf" class="hover:text-white" aria-label="Resume">
+        <a
+          href="/[Dennis Landaverde] Engineer_Profile.pdf"
+          target="_blank"
+          class="hover:text-white"
+          aria-label="Resume"
+        >
           <span set:html={FileText} class="w-5 h-5 inline-block" />
         </a>
         <a
@@ -53,19 +78,25 @@ const currentYear = new Date().getFullYear();
     <div>
       <h3 class="text-white font-medium mb-2">Me</h3>
       <ul class="space-y-1">
-        <li><a href="/projects" class="hover:text-white">Projects</a></li>
+        <li>
+          <a href={`/${currentLang}/projects`} class="hover:text-white"
+            >{t.nav.projects}</a
+          >
+        </li>
         <li>
           <a href={`/${currentLang}#tech`} class="hover:text-white"
-            >Tech Stack</a
+            >{t.nav.tech}</a
           >
         </li>
         <li>
           <a href={`/${currentLang}#services`} class="hover:text-white"
-            >Services</a>
+            >{t.nav.services}</a
+          >
         </li>
         <li>
           <a href={`/${currentLang}#contact`} class="hover:text-white"
-            >Contact</a>
+            >{t.nav.contact}</a
+          >
         </li>
       </ul>
     </div>
@@ -86,8 +117,7 @@ const currentYear = new Date().getFullYear();
   >
     <p class="text-zinc-400 text-center">
       © {currentYear}
-      <span class="text-white hover:text-white">Dennis</span>. All rights
-      reserved.
+      <span class="text-white hover:text-white">Dennis</span>. {t.copyright}
     </p>
     <GitHubLastUpdated />
   </div>
